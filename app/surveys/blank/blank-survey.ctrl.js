@@ -1,8 +1,4 @@
-angular.module('app.core').controller('BlankSurveyController', function(SurveyService){
+angular.module('app.core').controller('BlankSurveyController', function(){
     var vm = this;
-    SurveyService.getRepos('enriquezrene').then(function (data) {
-        console.log(data);
-        vm.show = data;
-    });
 
 });
