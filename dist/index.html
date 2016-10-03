@@ -1,9 +1,90 @@
-<!doctype html> <html> <head> <meta charset="utf-8"> <title></title> <meta name="description" content=""> <meta name="viewport" content="width=device-width"> <!-- Place favicon.ico and apple-touch-icon.png in the root directory --> <link rel="stylesheet" href="styles/vendor.1148a0ca.css"> <link rel="stylesheet" href="styles/main.16c86e60.css"> </head> <body ng-app="angularDemoApp"> <!--[if lte IE 8]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]--> <!-- Add your site or application content here --> <div class="header"> <div class="navbar navbar-default" role="navigation"> <div class="container"> <div class="navbar-header"> <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> <a class="navbar-brand" href="#/">angularDemo</a> </div> <div class="collapse navbar-collapse" id="js-navbar-collapse"> <ul class="nav navbar-nav"> <li class="active"><a href="#/">Home</a></li> <li><a ng-href="#/about">About</a></li> <li><a ng-href="#/">Contact</a></li> </ul> </div> </div> </div> </div> <div class="container"> <div ng-view=""></div> </div> <div class="footer"> <div class="container"> <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p> </div> </div> <!-- Google Analytics: change UA-XXXXX-X to be your site's ID --> <script>!function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
-       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
-       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
-       }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+<!doctype html>
+<html>
+<head lang="en">
+  <meta charset="utf-8">
+  <title>Surveys</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css"/>
+  <script type="text/javascript"
+          src="http://maps.googleapis.com/maps/api/js?libraries=places&sensor=false&key=AIzaSyCMg61YckNGdx5JS0lx1eBTcynE2w82n9o"></script>
 
-       ga('create', 'UA-XXXXX-X');
-       ga('send', 'pageview');</script> <script src="scripts/vendor.ce46657d.js"></script> <script src="scripts/scripts.eb112cce.js"></script> </body> </html>
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body ng-app="app">
+<!--[if lte IE 8]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+  your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<nav style="text-align: right">
+  <div ng-controller="i18nCtrl">
+    <div class="btn-group">
+      <a class="btn dropdown-toggle" data-toggle="dropdown">
+        Choose your language
+        <span class="caret"></span>
+      </a>
+      <ul class="dropdown-menu">
+        <li><a ng-click="changeLanguage('es')"><img src="i18n/flag-spain.png"/>&nbsp;Spanish</a></li>
+        <li><a ng-click="changeLanguage('en')"><img src="i18n/flag-uk.png"/>&nbsp;English</a></li>
+        <li><a ng-click="changeLanguage('de')"><img src="i18n/flag-germany.png"/>&nbsp;German</a></li>
+        <li><a ng-click="changeLanguage('fr')"><img src="i18n/flag-france.png"/>&nbsp;French</a></li>
+        <li><a ng-click="changeLanguage('it')"><img src="i18n/flag-italy.png"/>&nbsp;Italian</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">Trailers Audit</a>
+    </div>
+    <ul class="nav navbar-nav" bs-active-link>
+      <li><a href="#/blank-survey">{{ 'Menu.download.form' | translate }}</a></li>
+      <li><a href="#/fill-survey">{{ 'Menu.fill.form' | translate }}</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="main-container container" ng-view></main>
+
+<!-- build:js(.) scripts/vendor.js -->
+<!-- bower:js -->
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.1/angular.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.1/angular-animate.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.1/angular-cookies.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.1/angular-resource.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.1/angular-route.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.1/angular-sanitize.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.0-beta.1/angular-touch.min.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="bower_components/angular-translate/angular-translate.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
+
+<!-- build:js({.tmp,app}) scripts/scripts.js -->
+
+
+<script src="app.js"></script>
+<script src="scripts/app.angular.default.js"></script>
+<script src="app.core.js"></script>
+<script src="app.routes.js"></script>
+<script src="app.services.js"></script>
+<script src="app.translate.js"></script>
+
+<!--controllers-->
+<script src="surveys/blank/blank-survey.ctrl.js"></script>
+<script src="surveys/fill/fill-survey.ctrl.js"></script>
+<script src="i18n/i18n.ctrl.js"></script>
+
+<!--components-->
+<script src="components/bsActiveLink/bs-active-link.js"></script>
+<script src="components/ngAutocomplete/ng-autocomplete.js"></script>
+
+<!--services-->
+<script src="services/surveys.fct.js"></script>
+</body>
+</html>
